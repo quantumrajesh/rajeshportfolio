@@ -1,46 +1,169 @@
-# Getting Started with Create React App
+# Rajesh Choudhary - Digital Marketing Strategist Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, professional portfolio website built with React, TypeScript, and Tailwind CSS. This portfolio showcases expertise in digital marketing, performance marketing, and AI-driven campaigns.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Modern Design**: Clean, professional, and minimalist design with smooth animations
+- **Fully Responsive**: Mobile-first design that works perfectly on all devices
+- **Dark Mode**: Built-in dark/light theme toggle with system preference detection
+- **Smooth Scrolling**: Seamless navigation with animated scroll behaviors
+- **Performance Optimized**: Fast loading times with optimized assets and code splitting
+- **SEO Ready**: Semantic HTML structure ready for SEO optimization
+- **Contact Form**: Functional contact form with validation using React Hook Form
+- **Interactive Animations**: Smooth animations powered by Framer Motion
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend**: React 19 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **Animations**: Framer Motion
+- **Form Handling**: React Hook Form
+- **Icons**: Lucide React
+- **Build Tool**: Create React App with CRACO
+- **Font**: Inter and Poppins (Google Fonts)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Quick Start
 
-### `npm test`
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. **Clone or download the repository**
+   ```bash
+   git clone <repository-url>
+   cd rajeshportfolio
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Start development server**
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+### Build for Production
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The build artifacts will be stored in the `build/` directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📝 Customization Guide
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Personal Information
+Edit the file `src/data/portfolio.ts` to update:
+- Personal details (name, email, phone, location)
+- Professional headline and tagline
+- Skills and expertise
+- Work experience
+- Projects and case studies
+- Certifications
+- Social media links
 
-## Learn More
+### Colors & Branding
+The color scheme is defined in `tailwind.config.js`:
+- **Primary colors**: Professional blues (modify the `primary` color palette)
+- **Accent colors**: Teals (modify the `accent` color palette)
+- **Dark mode**: Automatic theme switching with custom dark variants
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Content Sections
+Each section is a separate component in `src/components/sections/`:
+- `Hero.tsx` - Landing section with introduction
+- `About.tsx` - Professional summary and skills
+- `Experience.tsx` - Work history timeline
+- `Projects.tsx` - Case studies and portfolio pieces
+- `Certifications.tsx` - Professional certifications
+- `Contact.tsx` - Contact form and information
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Images & Assets
+- Replace placeholder images in the `public/` directory
+- Update project screenshots by modifying image URLs in `portfolio.ts`
+- Add your professional headshot to replace the initials placeholder
+
+### Styling Customization
+- Global styles: `src/index.css`
+- Component styles: Individual component files use Tailwind classes
+- Custom components: Defined in the `@layer components` section of `index.css`
+
+## 📁 Project Structure
+
+```
+src/
+├── components/           # React components
+│   ├── sections/        # Main page sections
+│   ├── Header.tsx       # Navigation header
+│   └── Footer.tsx       # Site footer
+├── data/
+│   └── portfolio.ts     # All portfolio content and data
+├── hooks/
+│   └── useDarkMode.ts   # Dark mode functionality
+├── utils/
+│   └── smoothScroll.ts  # Scroll utilities and animations
+└── index.css            # Global styles and Tailwind imports
+```
+
+## 🚀 Deployment
+
+This project can be deployed to various platforms:
+
+### Netlify (Recommended)
+1. Build the project: `npm run build`
+2. Drag and drop the `build/` folder to Netlify
+3. Or connect your Git repository for automatic deployments
+
+### Vercel
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel` in the project directory
+3. Follow the deployment prompts
+
+### Other Platforms
+The `build/` folder contains static assets that can be deployed to any static hosting service.
+
+## 🔧 Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run eject` - Eject from Create React App (not recommended)
+
+## 📱 Browser Support
+
+- Chrome (latest 2 versions)
+- Firefox (latest 2 versions)
+- Safari (latest 2 versions)
+- Edge (latest 2 versions)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📞 Support
+
+If you have questions about customizing this portfolio:
+- Email: rach101201@gmail.com
+- LinkedIn: [linkedin.com/in/rach101](https://linkedin.com/in/rach101)
+
+## 🙏 Acknowledgments
+
+- Design inspiration from modern portfolio trends
+- Built with Create React App and React ecosystem
+- Icons provided by Lucide React
+- Fonts by Google Fonts
