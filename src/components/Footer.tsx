@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-4">
-              Driving digital growth through strategic marketing and AI-driven campaigns
+              Where marketing strategy meets code — building digital solutions that drive growth
             </p>
             <p className="text-gray-400 text-sm">
               Based in {personalInfo.location}

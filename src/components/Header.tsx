@@ -14,10 +14,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
 
   const navItems = [
     { id: 'hero', label: 'Home' },
+    { id: 'expertise', label: 'Expertise' },
     { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' },
+    { id: 'projects', label: 'Marketing' },
+    { id: 'development', label: 'Development' },
     { id: 'contact', label: 'Contact' },
   ];
 

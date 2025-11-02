@@ -65,9 +65,15 @@ const Certifications: React.FC = () => {
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                         {cert.name}
                       </h3>
-                      <p className="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-3">
+                      <p className="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-2">
                         {cert.issuer}
                       </p>
+                      
+                      {cert.description && (
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                          {cert.description}
+                        </p>
+                      )}
                       
                       <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <Calendar size={14} />
@@ -97,17 +103,6 @@ const Certifications: React.FC = () => {
                           Verify Credential
                         </a>
                       )}
-                    </div>
-                  </div>
-
-                  {/* Certification Badge/Logo Placeholder */}
-                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                    <div className="flex justify-center">
-                      <div className="w-24 h-12 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center">
-                        <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                          {cert.issuer.split(' ')[0]} Logo
-                        </span>
-                      </div>
                     </div>
                   </div>
                 </div>

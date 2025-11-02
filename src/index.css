@@ -38,6 +38,13 @@ body {
   --accent-200: #99f6e4;
   --accent-800: #115e59;
   --accent-900: #134e4a;
+  
+  /* Mode-specific colors (dynamically updated) */
+  --mode-primary: #6366f1;
+  --mode-secondary: #8b5cf6;
+  --mode-accent: #0284c7;
+  --mode-gradient-from: #6366f1;
+  --mode-gradient-to: #8b5cf6;
 }
 
 /* Button Styles */

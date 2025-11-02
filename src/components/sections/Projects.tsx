@@ -1,9 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Target, TrendingUp, Award } from 'lucide-react';
-import { projects } from '../../data/portfolio';
+import { marketingProjects } from '../../data/portfolio';
+import { useMode } from '../../contexts/ModeContext';
 
 const Projects: React.FC = () => {
+  const { isMarketing } = useMode();
+  
+  // Don't render if in development-only mode
+  if (!isMarketing) {
+    return null;
+  }
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,7 +61,7 @@ const Projects: React.FC = () => {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {marketingProjects.map((project: any, index: number) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
@@ -95,7 +102,7 @@ const Projects: React.FC = () => {
                         Key Results:
                       </h4>
                       <div className="space-y-1">
-                        {project.keyMetrics.map((metric, metricIndex) => (
+                        {project.keyMetrics.map((metric: string, metricIndex: number) => (
                           <div
                             key={metricIndex}
                             className="flex items-center gap-2 text-sm"
@@ -112,7 +119,7 @@ const Projects: React.FC = () => {
                     {/* Skills Used */}
                     <div className="mb-6">
                       <div className="flex flex-wrap gap-1">
-                        {project.skillsUsed.slice(0, 3).map((skill, skillIndex) => (
+                        {project.skillsUsed.slice(0, 3).map((skill: string, skillIndex: number) => (
                           <span
                             key={skillIndex}
                             className="text-xs bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 px-2 py-1 rounded-full"

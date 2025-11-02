@@ -1,9 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { skills, stats } from '../../data/portfolio';
-import { TrendingUp, Users, Target, Heart } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { stats, modeAboutContent } from '../../data/portfolio';
+import { TrendingUp, Users, Target, Heart, CheckCircle } from 'lucide-react';
+import { useMode } from '../../contexts/ModeContext';
 
 const About: React.FC = () => {
+  const { mode } = useMode();
+  const aboutContent = modeAboutContent[mode];
   const iconMap = {
     'trending-up': TrendingUp,
     'users': Users,
@@ -42,36 +45,51 @@ const About: React.FC = () => {
           variants={containerVariants}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="section-title">About Me</h2>
+          <motion.div 
+            key={`${mode}-header`}
+            variants={itemVariants} 
+            className="text-center mb-16"
+          >
+            <h2 className="section-title">{aboutContent.title}</h2>
             <p className="section-subtitle">
-              Passionate digital marketing strategist with expertise in AI-driven campaigns and performance marketing
+              {aboutContent.subtitle}
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Professional Summary */}
-            <motion.div variants={itemVariants}>
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Professional Summary
-                </h3>
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Digital Marketing Strategist with 3+ years of experience driving measurable growth through 
-                  data-driven marketing strategies. Specializing in performance marketing, AI-powered content creation, 
-                  and multi-channel campaign optimization.
-                </p>
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Proven track record of delivering 150%+ engagement increases, growing social media followings 
-                  organically, and optimizing ad campaigns for maximum ROI. Expert in leveraging cutting-edge 
-                  AI tools and analytics to stay ahead of digital marketing trends.
-                </p>
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Based in Jaipur, Rajasthan, I help businesses transform their digital presence and achieve 
-                  sustainable growth through strategic marketing initiatives and innovative campaign execution.
-                </p>
-              </div>
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={`${mode}-summary`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                    My Story
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {aboutContent.story}
+                  </p>
+                  
+                  <div className="mt-8">
+                    <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                      My Approach
+                    </h4>
+                    <div className="space-y-3">
+                      {aboutContent.approach.map((item: string, idx: number) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Skills & Stats */}
             <motion.div variants={itemVariants}>
@@ -79,21 +97,32 @@ const About: React.FC = () => {
               <div className="grid grid-cols-2 gap-6 mb-8">
                 {stats.map((stat, index) => {
                   const IconComponent = iconMap[stat.icon as keyof typeof iconMap];
+                  
+                  // Different colors for each stat card
+                  const colors = [
+                    { bg: 'bg-orange-100 dark:bg-orange-900/30', icon: 'text-orange-600 dark:text-orange-400', border: 'border-orange-200 dark:border-orange-800' },
+                    { bg: 'bg-blue-100 dark:bg-blue-900/30', icon: 'text-blue-600 dark:text-blue-400', border: 'border-blue-200 dark:border-blue-800' },
+                    { bg: 'bg-purple-100 dark:bg-purple-900/30', icon: 'text-purple-600 dark:text-purple-400', border: 'border-purple-200 dark:border-purple-800' },
+                    { bg: 'bg-green-100 dark:bg-green-900/30', icon: 'text-green-600 dark:text-green-400', border: 'border-green-200 dark:border-green-800' },
+                  ];
+                  
+                  const color = colors[index % colors.length];
+                  
                   return (
                     <motion.div
                       key={index}
-                      whileHover={{ scale: 1.05 }}
-                      className="card text-center"
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className={`bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border-2 ${color.border} text-center transition-all`}
                     >
                       <div className="flex justify-center mb-3">
-                        <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg">
-                          <IconComponent className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                        <div className={`p-3 ${color.bg} rounded-xl`}>
+                          <IconComponent className={`w-6 h-6 ${color.icon}`} />
                         </div>
                       </div>
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      <div className={`text-3xl font-bold mb-1 ${color.icon}`}>
                         {stat.value}
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                      <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                         {stat.label}
                       </div>
                     </motion.div>
@@ -101,27 +130,6 @@ const About: React.FC = () => {
                 })}
               </div>
 
-              {/* Skills */}
-              <div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Core Skills & Expertise
-                </h4>
-                <div className="flex flex-wrap gap-3">
-                  {skills.map((skill, index) => (
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.05 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05 }}
-                      className="skill-tag"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </div>
         </motion.div>
